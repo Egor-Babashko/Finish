@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\PaginationServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use Nette\Utils\Paginator;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -14,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        \Illuminate\Pagination\Paginator::useBootstrapFive();
     }
 
     /**

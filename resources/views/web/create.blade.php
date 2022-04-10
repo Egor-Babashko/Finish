@@ -1,6 +1,6 @@
-@extends('web.layout')
+@extends('layouts.app')
 
-@section('main')
+@section('content')
 
     @if($errors->any())
         @foreach($errors->all() as $error)

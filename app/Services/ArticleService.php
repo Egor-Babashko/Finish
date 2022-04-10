@@ -19,10 +19,10 @@ class ArticleService
 
     public function getById(int $id)
     {
-        return  Article::find($id);
+        return Article::find($id);
     }
 
     public function getAll() {
-        return Article::orderByDesc()->paginate(7);
+        return Article::orderBy('id', 'desc')->paginate(9);
     }
 }

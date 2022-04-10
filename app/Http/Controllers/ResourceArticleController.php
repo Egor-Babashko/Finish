@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Services\ArticleService;
 use Illuminate\Http\Request;
 
 class ResourceArticleController extends Controller
 {
-    private ArticleService $articleService;
 
-    public function __construct(ArticleService $articleService)
-    {
-        $this->articleService = $articleService;
-    }
+    public function __construct(
+        private ArticleService $articleService
+    ) {}
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('web.allArticles', [
+            'articles' => $this->articleService->getAll()
+        ]);
     }
 
     /**
@@ -93,10 +93,10 @@ class ResourceArticleController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        Article::destroy($id);
+        return redirect()->back();
     }
 }

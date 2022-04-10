@@ -18,4 +18,7 @@ Route::resource(
     \App\Http\Controllers\ResourceArticleController::class
 )->only(['index', 'show']);
 
-Auth::routes();
+
+Auth::routes([
+    'register' => false,
+]);
