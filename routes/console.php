@@ -17,3 +17,19 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('make:admin', function(){
+   \App\Models\User::create([
+      'name' => 'Admin',
+      'email' => 'admin@mail.ru',
+      'password' => \Illuminate\Support\Facades\Hash::make('123123123'),
+      'role' => 'admin'
+   ]);
+
+    \App\Models\User::create([
+        'name' => 'User',
+        'email' => 'user@mail.ru',
+        'password' => \Illuminate\Support\Facades\Hash::make('123123123'),
+        'role' => 'user'
+    ]);
+})->purpose("Create admin and test user");
